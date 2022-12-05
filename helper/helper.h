@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <math.h>
+#include <regex>
 
 namespace helper
 {
@@ -147,6 +148,20 @@ bool isStringLowerCase(const std::string& str)
     }
   }
   return true;
+}
+
+std::vector<std::string> findMultipleRgx(const std::string& rgx_str, std::string target)
+{
+  std::regex rgx(rgx_str);
+  std::smatch match;
+  
+  std::vector<std::string> matches;
+  while(regex_search(target, match, rgx))
+  {
+    matches.push_back(match[0]); 
+    target = match.suffix();
+  }
+  return matches;
 }
 
 } // namespace helper
