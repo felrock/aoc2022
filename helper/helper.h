@@ -164,4 +164,22 @@ std::vector<std::string> findMultipleRgx(const std::string& rgx_str, std::string
   return matches;
 }
 
+
+std::string join(std::vector<std::string> path, std::string delim="/")
+{
+  std::string joined_path = "";
+  for (auto& p : path)
+  {
+    if (p != delim)
+    {
+      joined_path += p + delim;
+    }
+    else
+    {
+      joined_path += p;
+    }
+  }
+  return joined_path;
+}
+
 } // namespace helper
